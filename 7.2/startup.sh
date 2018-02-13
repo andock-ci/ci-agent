@@ -57,7 +57,7 @@ else
 	DOCKSALRC='source $HOME/.docksalrc >/dev/null 2>&1'
 	# Launch the passed command in an non-interactive bash session under docker user
 	# $@ does not work here. $* has to be used.
-
-	exec gosu docker bash -c "$DOCKSALRC;$@"
-
+    COMMAND= cat "$*"|tr '\n' ' '
+    echo $COMMAND
+	exec gosu docker bash -c $COMMAND
 fi
