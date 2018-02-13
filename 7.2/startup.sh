@@ -54,8 +54,12 @@ if [[ "$1" == "supervisord" ]]; then
 # Command mode (run as docker user)
 else
 	# This makes sure the environment is set up correctly for the docker user
-	DOCKSALRC='source $HOME/.docksalrc >/dev/null 2>&1'
+	# DOCKSALRC='source $HOME/.docksalrc >/dev/null 2>&1'
 	# Launch the passed command in an non-interactive bash session under docker user
 	# $@ does not work here. $* has to be used.
-	exec gosu docker bash -c "$DOCKSALRC;"
+
+	#exec gosu docker bash -c "$DOCKSALRC"
+	#source $HOME/.docksalrc;
+
+	gosu docker "$@"
 fi

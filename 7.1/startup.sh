@@ -58,4 +58,5 @@ else
 	# Launch the passed command in an non-interactive bash session under docker user
 	# $@ does not work here. $* has to be used.
 	exec gosu docker bash -c "$DOCKSALRC;"
+	gosu docker "$@"
 fi
